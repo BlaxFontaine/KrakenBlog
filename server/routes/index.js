@@ -3,6 +3,18 @@ var router = express.Router();
 var User = require('../models/user');
 var mid = require('../middleware');
 
+//GET /users
+router.get('/users', function (req, res, next) {
+  User.find({})
+      .exec(function (error, users) {
+        if (error) {
+          return next(error);
+        } else {
+          res.json(users);
+        }
+      });
+})
+
 // GET /profile
 router.get('/profile', mid.requiresLogin, function(req, res, next) {
   User.findById(req.session.userId)
