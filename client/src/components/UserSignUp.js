@@ -3,40 +3,53 @@ import axios from 'axios';
 
 export default class UserSignUp extends Component {
   constructor(props) {
-    super(props);
-
-    this.onSubmit = this.onSubmit.bind(this);
-
+    super(props)
+    
     this.state = {
       username: '',
       email: '',
       password: '',
       confirmPassword: ''
     }
+    
+    this.onSubmit = this.onSubmit.bind(this);
   }
-
+  
   onSubmit(e) {
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword
-    }
-
-    axios.post('http://localhost:5000/register', user)
-      .then(res => console.log(res.data));
-
+    e.preventDefault();    
+    
+    axios.post('http://localhost:5000/register', this.state)
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err.response));
+    
     this.setState = {
       username: '',
       email: '',
       password: '',
       confirmPassword: ''
     }
+}
+
+  onChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+
+    this.setState(() => {
+      return {
+        [name]: value
+      };
+    });
   }
 
   render() {
+    
+    const {
+      username,
+      email,
+      password,
+      confirmPassword,
+    } = this.state;
+
     return (
       <div className="bounds">
         <div className="grid-33 centered">
@@ -48,9 +61,11 @@ export default class UserSignUp extends Component {
                 id="username"
                 className="form-control"
                 name="username"
+                value={username}
                 placeholder="username"
                 minLength="5"
                 maxLength="20"
+                onChange={this.onChange}
                 required />
             </div>
 
@@ -60,6 +75,8 @@ export default class UserSignUp extends Component {
                 id="email"
                 className="form-control"
                 name="email"
+                value={email}
+                onChange={this.onChange}
                 placeholder="email"
                 required />
             </div>
@@ -70,6 +87,8 @@ export default class UserSignUp extends Component {
                 id="password"
                 className="form-control"
                 name="password"
+                value={password}
+                onChange={this.onChange}
                 placeholder="password"
                 required />
             </div>
@@ -80,6 +99,8 @@ export default class UserSignUp extends Component {
                 id="confirmPassword"
                 className="form-control"
                 name="confirmPassword"
+                value={confirmPassword}
+                onChange={this.onChange}
                 placeholder="password confirmation"
                 required />
             </div>

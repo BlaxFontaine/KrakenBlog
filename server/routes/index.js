@@ -18,7 +18,7 @@ router.post('/register', function(req, res, next) {
   
       // create user
       var userData = {
-        login: req.body.login,
+        username: req.body.username,
         email: req.body.email,
         password: req.body.password
       };
@@ -26,10 +26,10 @@ router.post('/register', function(req, res, next) {
       // use schema's create method
       User.create(userData, function(error, user) {
         if (error) {
-          return next(error);
+          res.status(500).send('User not saved')
         } else {
-          req.session.userId = user._id;
-          return res.redirect('/profile');
+          // req.session.userId = user._id;
+          res.status(200).send('User saved')
         }
       });
   
