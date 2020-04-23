@@ -6,10 +6,13 @@ import UserSignUp from './components/Auth/UserSignUp';
 import UserLogIn from './components/Auth/UserLogIn';
 import UserProfile from './components/UserProfile';
 import MembersList from './components/MembersList';
+import NavBar from './components/NavBar';
+
 
 function App() {
   return (
     <div>
+      <NavBar />
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={Home} />
