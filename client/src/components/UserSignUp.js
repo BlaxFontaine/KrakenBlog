@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export default class UserSignUp extends Component {
@@ -9,25 +10,35 @@ export default class UserSignUp extends Component {
       username: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      redirect: false
     }
     
     this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
   
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();    
     
-    axios.post('http://localhost:5000/register', this.state)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err.response));
-    
-    this.setState = {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: ''
+    const user = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword
     }
+
+    axios.post('http://localhost:5000/register', user)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log(this.state.redirect);
+        this.setState({ redirect: true });
+      }
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+    
 }
 
   onChange = (event) => {
@@ -50,8 +61,12 @@ export default class UserSignUp extends Component {
       confirmPassword,
     } = this.state;
 
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
+
     return (
-      <div className="bounds">
+      <div className="container">
         <div className="grid-33 centered">
           <h1>Register</h1>
           <form onSubmit={this.onSubmit}>
