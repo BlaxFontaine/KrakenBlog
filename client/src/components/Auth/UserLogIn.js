@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export default class UserLogIn extends Component {
@@ -7,7 +8,8 @@ export default class UserLogIn extends Component {
     
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      redirect: false
     }
     
     this.onSubmit = this.onSubmit.bind(this);
@@ -15,13 +17,24 @@ export default class UserLogIn extends Component {
   }
   
   onSubmit(e) {
-    e.preventDefault();    
+    e.preventDefault();
+
+    const user = {
+      email: this.state.email,
+      password: this.state.password
+    }    
     
-    axios.post('http://localhost:5000/login', this.state)
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err.response));
-    
-}
+    axios.post('http://localhost:5000/login', user)
+    .then((res) => {
+      if (res.status === 200) {
+        console.log(this.state.redirect);
+        this.setState({ redirect: true });
+      }
+    })
+    .catch(function (err) {
+        console.log(err)
+    });
+  }
 
   onChange = (event) => {
     const name = event.target.name;
@@ -39,6 +52,10 @@ export default class UserLogIn extends Component {
       email,
       password,
     } = this.state;
+
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
 
     return (
       <div className="bounds">
