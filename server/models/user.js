@@ -19,7 +19,7 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  }
+  },
   message: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Message"

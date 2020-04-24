@@ -7,6 +7,7 @@ import UserLogIn from './components/Auth/UserLogIn';
 import UserProfile from './components/UserProfile';
 import UserList from './components/UserList';
 import NavBar from './components/NavBar';
+import MessageCreate from './components/Message/MessageCreate';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" component={UserLogIn} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/list" component={UserList} />
+          <Route path="/messagecreate" component={MessageCreate} />
         </Switch>
       </BrowserRouter>
     </div>
