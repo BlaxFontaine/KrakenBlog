@@ -5,12 +5,13 @@ var mid = require('../middleware');
 
 // GET /profile
 router.get('/profile', mid.requiresLogin, function(req, res, next) {
+  console.log(req);
   User.findById(req.session.userId)
       .exec(function (error, user) {
         if (error) {
           return next(error);
         } else {
-          return res.render('profile', { title: 'Profile', name: username });
+          return res.json(user);
         }
       });
 });
@@ -46,6 +47,7 @@ router.post('/login', function(req, res, next) {
         return next(err);
       }  else {
         req.session.userId = user._id;
+        console.log(req.session.userId);
         console.log('You are logged in.')
         
       }

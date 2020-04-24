@@ -5,7 +5,6 @@ import Home from './components/Home';
 import UserSignUp from './components/Auth/UserSignUp';
 import UserLogIn from './components/Auth/UserLogIn';
 import UserProfile from './components/UserProfile';
-import MembersList from './components/MembersList';
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
           <Route path="/register" component={UserSignUp} />
           <Route path="/login" component={UserLogIn} />
           <Route path="/profile" component={UserProfile} />
-          <Route path="/list" component={MembersList} />
         </Switch>
       </BrowserRouter>
     </div>
