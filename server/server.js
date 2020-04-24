@@ -35,9 +35,13 @@ app.use(function (req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// include routes
+// include index routes
 var routes = require('./routes/index');
 app.use('/', routes);
+
+// include message routes
+var messRoutes = require('./routes/messages/index');
+app.use('/messages', messRoutes);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
