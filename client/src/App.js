@@ -9,7 +9,6 @@ import UserList from './components/UserList';
 import NavBar from './components/NavBar';
 import MessageCreate from './components/Message/MessageCreate';
 
-
 function App() {
   return (
     <div>
