@@ -20,6 +20,10 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+  message: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Message"
+  }
 });
 
 //authenticate method
