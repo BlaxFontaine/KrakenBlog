@@ -13,6 +13,7 @@ export default class UserProfile extends Component {
       confirmPassword: '',
       redirect: false
     }
+}
     
 	render() {
 		const {
