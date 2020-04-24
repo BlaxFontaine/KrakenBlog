@@ -15,7 +15,7 @@ export default class MessageList extends Component {
     axios.get('http://localhost:5000/messages')
     .then((res) => {
       this.setState({
-        messages: res.data
+        messages: res.data.reverse()
       })
     })
     .catch(function (err) {
