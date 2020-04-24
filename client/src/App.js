@@ -5,7 +5,7 @@ import Home from './components/Home';
 import UserSignUp from './components/Auth/UserSignUp';
 import UserLogIn from './components/Auth/UserLogIn';
 import UserProfile from './components/UserProfile';
-import MembersList from './components/MembersList';
+import UserList from './components/UserList';
 import NavBar from './components/NavBar';
 
 
@@ -19,7 +19,7 @@ function App() {
           <Route path="/register" component={UserSignUp} />
           <Route path="/login" component={UserLogIn} />
           <Route path="/profile" component={UserProfile} />
-          <Route path="/list" component={MembersList} />
+          <Route path="/list" component={UserList} />
         </Switch>
       </BrowserRouter>
     </div>

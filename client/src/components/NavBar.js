@@ -5,12 +5,19 @@ export default class NavBar extends Component {
 
     render() {
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="/">Kraken Blog</Navbar.Brand>
+            <Navbar className="color-nav" collapseOnSelect expand="lg" variant="dark">
+            <Navbar.Brand href="/">
+                <img
+                    alt=""
+                    src="/kraken-icon.jpg"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-top"
+                />{' '}Kraken Blog</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#features">Features</Nav.Link>
+                    <Nav.Link href="/list">Users list</Nav.Link>
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
                     <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

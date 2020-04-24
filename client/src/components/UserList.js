@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import User from './User';
 
-export default class UserSignUp extends Component {
+export default class UserList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,7 +35,7 @@ export default class UserSignUp extends Component {
   render() {
     return (
       <div className="container">
-          <h1>Member list</h1>
+          <h1>Users list</h1>
           {this.Users()}
       </div>
     )
