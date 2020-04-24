@@ -3,6 +3,18 @@ var router = express.Router();
 var Message = require('../../models/message');
 var mid = require('../../middleware');
 
+// GET /messages
+router.get('/', function (req, res, next) {
+  Message.find({})
+      .exec(function (error, messages) {
+        if (error) {
+          return next(error);
+        } else {
+          res.json(messages);
+        }
+      });
+})
+
 // POST /messages/add
 router.post('/add', function (req, res, next) {
     if (req.body.content) {
