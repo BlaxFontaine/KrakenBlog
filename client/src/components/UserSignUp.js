@@ -31,7 +31,6 @@ export default class UserSignUp extends Component {
     axios.post('http://localhost:5000/register', user)
     .then((res) => {
       if (res.status === 200) {
-        console.log(this.state.redirect);
         this.setState({ redirect: true });
       }
     })
