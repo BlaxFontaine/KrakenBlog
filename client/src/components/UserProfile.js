@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Icon from '@material-ui/core/Icon';
-import EditIcon from '@material-ui/icons/Edit';
 
 export default class UserProfile extends Component {
 	
@@ -46,7 +44,7 @@ export default class UserProfile extends Component {
 				                </td>
 				                <td>
 				                	<Link to="/edit">
-				                	<EditIcon>Edit</EditIcon>
+				                	{/* <EditIcon>Edit</EditIcon> */}
 				                	</Link>
 				                </td>
             				</tr>

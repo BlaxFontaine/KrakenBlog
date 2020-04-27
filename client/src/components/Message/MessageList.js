@@ -7,12 +7,18 @@ export default class MessageList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      messages: []
+      messages: [],
+      user: JSON.parse(localStorage.getItem('user'))
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/messages')
+    console.log(this.state.user)
+    axios.get('http://localhost:5000/messages/', {
+      params: {
+        user: this.state.user._id
+      }
+    })
     .then((res) => {
       this.setState({
         messages: res.data.reverse()
