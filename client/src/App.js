@@ -1,11 +1,14 @@
 import React from 'react';
+// import { Provider } from './components/Context';
 import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Icon from '@material-ui/core/Icon';
 import Home from './components/Home';
 import UserSignUp from './components/Auth/UserSignUp';
 import UserLogIn from './components/Auth/UserLogIn';
 import UserProfile from './components/UserProfile';
 import UserList from './components/UserList';
+import UserEdit from './components/UserEdit';
 import NavBar from './components/NavBar';
 import MessageCreate from './components/Message/MessageCreate';
 import MessageList from './components/Message/MessageList';

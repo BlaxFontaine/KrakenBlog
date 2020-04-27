@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-var mid = require('../middleware');
+// var mid = require('../middleware');
 
 //GET /users
 router.get('/users', function (req, res, next) {
@@ -16,7 +16,7 @@ router.get('/users', function (req, res, next) {
 })
 
 // GET /profile
-router.get('/profile', mid.requiresLogin, function(req, res, next) {
+router.get('/profile', function(req, res, next) {
   console.log(req);
   User.findById(req.session.userId)
       .exec(function (error, user) {
@@ -27,6 +27,21 @@ router.get('/profile', mid.requiresLogin, function(req, res, next) {
         }
       });
 });
+
+// PUT /edit
+router.get('/edit/:id').put((req, res, next) => {
+    user.findByIdAndUpdate(req.params.id, {
+        $set: req.body
+    }, (error, data) => {
+        if (error) {
+            return next(error);
+            console.log(error);
+        } else {
+            res.json(user);
+            console.log('User updated successfully !');
+        }
+    })
+})
 
 // GET /logout
 router.get('/logout', function(req, res, next) {
@@ -43,7 +58,7 @@ router.get('/logout', function(req, res, next) {
 });
 
 // GET /login
-router.get('/login', mid.loggedOut, function(req, res, next) {
+router.get('/login', function(req, res, next) {
   return res.render('login', { title: 'Log In'});
 });
 
@@ -59,9 +74,10 @@ router.post('/login', function(req, res, next) {
         return next(err);
       }  else {
         req.session.userId = user._id;
+        res.send(user);
+
         console.log(req.session.userId);
-        console.log('You are logged in.')
-        
+        console.log('You are logged in.') 
       }
     })
   } else {
