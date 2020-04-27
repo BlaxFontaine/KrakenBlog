@@ -28,6 +28,9 @@ export default class UserLogIn extends Component {
     .then((res) => {
       if (res.status === 200) {
         console.log(this.state.redirect);
+        const user = JSON.stringify(res.data);
+        console.log(user);
+        localStorage.setItem('user', user);
         this.setState({ redirect: true });
       }
     })
