@@ -11,7 +11,10 @@ app.use(cors());
 
 
 // mongodb connection
-mongoose.connect("mongodb://localhost:27017/krakenblog", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/krakenblog", {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useCreateIndex: true });
 var db = mongoose.connection;
 
 //mongo error
