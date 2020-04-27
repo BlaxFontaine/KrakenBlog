@@ -11,25 +11,24 @@ import UserList from './components/UserList';
 import UserEdit from './components/UserEdit';
 import NavBar from './components/NavBar';
 import MessageCreate from './components/Message/MessageCreate';
+import MessageList from './components/Message/MessageList';
 
 function App() {
   return (
-    /*<Provider>*/
-      <div>
-        <NavBar />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/register" component={UserSignUp} />
-            <Route path="/login" component={UserLogIn} />
-            <Route path="/profile" component={UserProfile} />
-            <Route path="/list" component={UserList} />
-            <Route path="/edit" component={UserEdit} />
-            <Route path="/messagecreate" component={MessageCreate} />
-          </Switch>
-        </BrowserRouter>
-      </div>
-    /*</Provider>*/
+    <div>
+      <NavBar />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/register" component={UserSignUp} />
+          <Route path="/login" component={UserLogIn} />
+          <Route path="/profile" component={UserProfile} />
+          <Route path="/list" component={UserList} />
+          <Route path="/messagecreate" component={MessageCreate} />
+          <Route path="/messagelist" component={MessageList} />
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 

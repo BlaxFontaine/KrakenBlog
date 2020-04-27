@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 export default class MessageCreate extends Component {
@@ -26,7 +25,7 @@ export default class MessageCreate extends Component {
     .then((res) => {
         console.log(res)
       if (res.status === 200) {
-        this.setState({ redirect: true });
+        console.log('success')
       }
     })
     .catch(function (err) {
@@ -52,14 +51,13 @@ export default class MessageCreate extends Component {
       content,
     } = this.state;
 
-    if (this.state.redirect) {
-      return <Redirect to="/" />
-    }
+    // if (this.state.redirect) {
+    //   return <Redirect to="/" />
+    // }
 
     return (
       <div className="container">
         <div className="grid-33 centered">
-          <h1>Add message</h1>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <input
@@ -68,12 +66,11 @@ export default class MessageCreate extends Component {
                 className="form-control"
                 name="content"
                 value={content}
-                placeholder="content"
+                placeholder="Spread your tentacles..."
                 maxLength="140"
                 onChange={this.onChange}
                 required />
             </div>
-
             <input
               type="submit"
               className="btn btn-dark"
