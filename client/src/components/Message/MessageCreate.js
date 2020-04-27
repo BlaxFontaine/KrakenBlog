@@ -7,6 +7,7 @@ export default class MessageCreate extends Component {
     
     this.state = {
       content: '',
+      user: JSON.parse(localStorage.getItem('user')),
       redirect: false
     }
     
@@ -19,6 +20,7 @@ export default class MessageCreate extends Component {
     
     const message = {
       content: this.state.content,
+      user: this.state.user
     }
 
     axios.post('http://localhost:5000/messages/add', message)

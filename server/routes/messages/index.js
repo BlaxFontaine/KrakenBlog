@@ -17,11 +17,12 @@ router.get('/', function (req, res, next) {
 
 // POST /messages/add
 router.post('/add', function (req, res, next) {
-    if (req.body.content) {
+    if (req.body.content && req.body.user) {
   
       // create message
       var messageData = {
-        content: req.body.content
+        content: req.body.content,
+        user: req.body.user
       };
   
       // use schema's create method
