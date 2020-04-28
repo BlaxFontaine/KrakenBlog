@@ -34,6 +34,7 @@ export default class MessageList extends Component {
       return (
         <Message
           content={message.content}
+          username={this.state.user.username}
           index={index}
         />
       )
