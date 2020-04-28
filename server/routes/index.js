@@ -28,7 +28,7 @@ router.get('/profile', function(req, res, next) {
 });
 
 // PUT /edit
-router.get('/edit/:id').put((req, res, next) => {
+router.put('/edit/:id', function(req, res, next) {
     user.findByIdAndUpdate(req.params.id, {
         $set: req.body
     }, (error, data) => {
