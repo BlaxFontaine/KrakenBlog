@@ -27,6 +27,7 @@ export default class MessageCreate extends Component {
     .then((res) => {
         console.log(res)
       if (res.status === 200) {
+        this.props.onChildSubmit(message);
         console.log('success')
       }
     })

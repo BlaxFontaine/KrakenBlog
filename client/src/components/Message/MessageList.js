@@ -10,6 +10,8 @@ export default class MessageList extends Component {
       messages: [],
       user: JSON.parse(localStorage.getItem('user'))
     }
+    this.handleChildSubmit = this.handleChildSubmit.bind(this);
+
   }
 
   componentDidMount() {
@@ -36,10 +38,15 @@ export default class MessageList extends Component {
         <Message
           content={message.content}
           username={this.state.user.username}
-          index={index}
+          key={index}
         />
       )
     })
+  }
+
+  handleChildSubmit(message) {
+    this.state.messages.unshift(message);
+    this.setState({messages: this.state.messages})
   }
 
   render() {
@@ -48,7 +55,7 @@ export default class MessageList extends Component {
           <h1>Message flow</h1>
           <br></br>
           <div>
-            <MessageCreate />
+            <MessageCreate onChildSubmit={this.handleChildSubmit}/>
           </div>
           <br></br>
           <div>
