@@ -13,20 +13,21 @@ export default class MessageList extends Component {
   }
 
   componentDidMount() {
-    console.log(this.state.user)
-    axios.get('http://localhost:5000/messages/', {
-      params: {
-        user: this.state.user._id
-      }
-    })
-    .then((res) => {
-      this.setState({
-        messages: res.data.reverse()
+    if (this.state.user) {
+      axios.get('http://localhost:5000/messages/', {
+        params: {
+          user: this.state.user._id
+        }
       })
-    })
-    .catch(function (err) {
-        console.log(err)
-    });
+      .then((res) => {
+        this.setState({
+          messages: res.data.reverse()
+        })
+      })
+      .catch(function (err) {
+          console.log(err)
+      });
+    }
   }
 
   Messages() {

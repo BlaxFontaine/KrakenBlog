@@ -27,9 +27,7 @@ export default class UserLogIn extends Component {
     axios.post('http://localhost:5000/login', user)
     .then((res) => {
       if (res.status === 200) {
-        console.log(this.state.redirect);
         const user = JSON.stringify(res.data);
-        console.log(user);
         localStorage.setItem('user', user);
         this.setState({ redirect: true });
       }
@@ -61,7 +59,7 @@ export default class UserLogIn extends Component {
     }
 
     return (
-      <div className="bounds">
+      <div className="container">
         <div className="grid-33 centered">
           <h1>Log In</h1>
           <form onSubmit={this.onSubmit}>
