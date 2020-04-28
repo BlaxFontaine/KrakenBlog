@@ -17,7 +17,6 @@ router.get('/users', function (req, res, next) {
 
 // GET /profile
 router.get('/profile', function(req, res, next) {
-  console.log(req);
   User.findById(req.session.userId)
       .exec(function (error, user) {
         if (error) {
@@ -65,7 +64,6 @@ router.get('/login', function(req, res, next) {
 
 // POST /login
 router.post('/login', function(req, res, next) {
-  console.log(req.body);
   if (req.body.email && req.body.password) {
     User.authenticate(req.body.email, req.body.password, function (error, user) {
       if (error || !user) {
@@ -75,8 +73,6 @@ router.post('/login', function(req, res, next) {
       }  else {
         req.session.userId = user._id;
         res.send(user);
-
-        console.log(req.session.userId);
         console.log('You are logged in.') 
       }
     })

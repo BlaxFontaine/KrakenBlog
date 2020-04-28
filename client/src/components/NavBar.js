@@ -28,8 +28,17 @@ export default class NavBar extends Component {
                     </NavDropdown>
                     </Nav>
                 <Nav>
-                    <Nav.Link href="/register">Sign up</Nav.Link>
-                    <Nav.Link href="/login">Log in</Nav.Link>
+                    { localStorage.getItem('user') ?
+                        <React.Fragment>
+                            <Nav.Link href="/profile">Profile</Nav.Link>
+                            <Nav.Link href="/logout">Log out</Nav.Link>
+                        </React.Fragment>
+                    :
+                        <React.Fragment>
+                            <Nav.Link href="/register">Sign up</Nav.Link>
+                            <Nav.Link href="/login">Log in</Nav.Link>
+                        </React.Fragment>
+                    }
                 </Nav>
             </Navbar.Collapse>
             </Navbar>

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
 import UserSignUp from './components/Auth/UserSignUp';
 import UserLogIn from './components/Auth/UserLogIn';
+import UserLogOut from './components/Auth/UserLogOut';
 import UserProfile from './components/UserProfile';
 import UserList from './components/UserList';
 import UserEdit from './components/UserEdit';
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route path="/register" component={UserSignUp} />
           <Route path="/login" component={UserLogIn} />
+          <Route path="/logout" component={UserLogOut} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/list" component={UserList} />
           <Route path="/messagecreate" component={MessageCreate} />
