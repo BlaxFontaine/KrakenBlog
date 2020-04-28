@@ -8,6 +8,7 @@ export default class Message extends Component {
         <Card>
             <Card.Body>
                 <Card.Title>{this.props.content}</Card.Title>
+                <Card.Text>{this.props.username}</Card.Text>
             </Card.Body>
         </Card>
     )
