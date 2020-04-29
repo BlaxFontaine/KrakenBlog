@@ -1,7 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
+var ObjectId = require('mongodb').ObjectId
 // var mid = require('../middleware');
+
+//PUT /subscription
+router.put('/subscribe', function(req, res, next) {
+  User.findOneAndUpdate(
+    {_id: ObjectId(req.body.params.user)},
+    { $push: {
+      subscriptions: req.body.params.subscription
+      }
+    }
+  ).exec()
+})
+
 
 //GET /users
 router.get('/users', function (req, res, next) {

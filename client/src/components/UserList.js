@@ -26,7 +26,9 @@ export default class UserList extends Component {
     return this.state.users.map((user, index) => {
       return (
         <User
+          id={user._id}
           username={user.username}
+          key={index}
         />
       )
     })
