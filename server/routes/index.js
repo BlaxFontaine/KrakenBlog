@@ -30,7 +30,7 @@ router.get('/users', function (req, res, next) {
 
 // GET /profile
 router.get('/profile', function(req, res, next) {
-  User.findById(req.session.userId)
+  User.find(req.session.userId)
       .exec(function (error, user) {
         if (error) {
           return next(error);
@@ -40,20 +40,34 @@ router.get('/profile', function(req, res, next) {
       });
 });
 
-// PUT /edit
-router.put('/edit/:id', function(req, res, next) {
-    user.findByIdAndUpdate(req.params.id, {
-        $set: req.body
-    }, (error, data) => {
-        if (error) {
-            return next(error);
-            console.log(error);
-        } else {
-            res.json(user);
-            console.log('User updated successfully !');
-        }
-    })
+// GET /edit
+router.route('/edit/:email').get((req, res) => {
+  console.log('hello', req.params.email);
+  User.find({'email': req.params.email })
+  .then((data) => {
+    res.send(data);
+  })
+  .catch(function (err) {
+      console.log(err)
+  });
 })
+
+// PUT /update
+router.route('/update/:email').put((req, res, next) => {
+  console.log('Hello les geckos');
+  User.update({'email':req.params.email}, {
+    $set: req.body
+  }, (error, data) => {
+    if (error) {
+      return next(error);
+      console.log(error)
+    } else {
+      res.json(data)
+      console.log('Student updated successfully !')
+    }
+  })
+})
+
 
 // GET /logout
 router.get('/logout', function(req, res, next) {

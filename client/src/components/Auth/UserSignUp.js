@@ -32,6 +32,8 @@ export default class UserSignUp extends Component {
     .then((res) => {
       if (res.status === 200) {
         console.log(this.state.redirect);
+        const newUser = JSON.stringify(user);
+        localStorage.setItem('user', newUser);
         this.setState({ redirect: true });
       }
     })
