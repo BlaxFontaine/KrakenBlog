@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import EditIcon from '@material-ui/icons/Edit';
 
 export default class UserProfile extends Component {
 	
 	constructor(props) {
 	    super(props)
-	    console.log(localStorage.getItem('user'));
+	    // console.log(localStorage.getItem('user'));
 	    this.state = { user: JSON.parse(localStorage.getItem('user')) };
 	    console.log(this.state.user);
-	    console.log(this.state.user.username);
 	    console.log('cat');
 	}
     
@@ -26,7 +26,6 @@ export default class UserProfile extends Component {
                             <tr>
                                 <td>Username</td>
                                 <td>Email</td>
-                                <td>Password</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
@@ -40,11 +39,8 @@ export default class UserProfile extends Component {
 				                    {this.state.user.email}
 				                </td>
 				                <td>
-				                    {this.state.user.password}
-				                </td>
-				                <td>
-				                	<Link to="/edit">
-				                	{/* <EditIcon>Edit</EditIcon> */}
+				                	<Link to="/edit/">
+				                	{ <EditIcon>Edit</EditIcon> }
 				                	</Link>
 				                </td>
             				</tr>

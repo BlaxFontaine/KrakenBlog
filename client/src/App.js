@@ -26,6 +26,7 @@ function App() {
           <Route path="/logout" component={UserLogOut} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/list" component={UserList} />
+          <Route path="/edit/" component={UserEdit} />
           <Route path="/messagecreate" component={MessageCreate} />
           <Route path="/messagelist" component={MessageList} />
         </Switch>
