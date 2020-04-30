@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
+var _ = require('underscore');
 
 var UserSchema = new mongoose.Schema({
   username: {
@@ -58,7 +59,11 @@ UserSchema.pre('save', function(next) {
   })
 });
 
-
+// // check if subcriptions unique values
+// UserSchema.pre('update', function (next) {
+//   this.subscriptions = _.uniq(this.subscriptions);
+//   next();
+// })
 
 var User = mongoose.model('User', UserSchema);
 module.exports = User;
