@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Message from './Message';
 import MessageCreate from './MessageCreate';
+import MessageEdit from './MessageEdit';
 
 export default class MessageList extends Component {
   constructor(props) {

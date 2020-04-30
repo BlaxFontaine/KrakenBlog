@@ -13,6 +13,8 @@ import UserEdit from './components/UserEdit';
 import NavBar from './components/NavBar';
 import MessageCreate from './components/Message/MessageCreate';
 import MessageList from './components/Message/MessageList';
+import MessageEdit from './components/Message/MessageEdit';
+import MessageDelete from './components/Message/MessageDelete';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
           <Route path="/edit/" component={UserEdit} />
           <Route path="/messagecreate" component={MessageCreate} />
           <Route path="/messagelist" component={MessageList} />
+          <Route path="/messageedit/" component={MessageEdit} />
+          <Route path="/messagedelete/" component={MessageDelete} />
         </Switch>
       </BrowserRouter>
     </div>
