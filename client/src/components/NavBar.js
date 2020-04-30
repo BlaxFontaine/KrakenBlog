@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 export default class NavBar extends Component {
     constructor(props) {
@@ -35,6 +35,7 @@ export default class NavBar extends Component {
                 <Nav>
                     { this.isLogged() ?
                         <React.Fragment>
+                            <Nav.Link href="/subscriptions">Subscriptions</Nav.Link>
                             <Nav.Link href="/profile">Profile</Nav.Link>
                             <Nav.Link href="/logout">Log out</Nav.Link>
                         </React.Fragment>

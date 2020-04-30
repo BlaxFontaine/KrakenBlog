@@ -11,6 +11,7 @@ import UserProfile from './components/UserProfile';
 import UserList from './components/UserList';
 import UserEdit from './components/UserEdit';
 import NavBar from './components/NavBar';
+import Subscriptions from './components/Subscriptions';
 import MessageCreate from './components/Message/MessageCreate';
 import MessageList from './components/Message/MessageList';
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/logout" component={UserLogOut} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/list" component={UserList} />
+          <Route path="/subscriptions" component={Subscriptions} />
           <Route path="/edit/" component={UserEdit} />
           <Route path="/messagecreate" component={MessageCreate} />
           <Route path="/messagelist" component={MessageList} />
