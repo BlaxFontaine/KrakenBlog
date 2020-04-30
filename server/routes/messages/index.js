@@ -16,6 +16,34 @@ router.get('/', function (req, res, next) {
       });
 })
 
+// GET /messages/edit
+router.route('/messageedit/:id').get((req, res) => {
+  console.log('hello', req.params.id);
+  Message.find({'id': req.params.id })
+  .then((data) => {
+    res.send(data);
+  })
+  .catch(function (err) {
+      console.log(err)
+  });
+})
+
+// PUT /message/update
+router.route('/update/:id').put((req, res, next) => {
+  console.log('Updating message');
+  Message.update({'id':req.params.id }, {
+    $set: req.body
+  }, (error, data) => {
+    if (error) {
+      return next(error);
+      console.log(error)
+    } else {
+      res.json(data)
+      console.log('Message updated successfully !')
+    }
+  })
+})
+
 // // GET /messages
 // router.get('/', function (req, res, next) {
 //   Message.find({})
@@ -54,5 +82,18 @@ router.post('/add', function (req, res, next) {
       return next(err);
     }
   })
+
+  // Delete Message
+router.route('/deletemessage/:id').delete((req, res, next) => {
+  Message.findByIdAndRemove(req.params.id, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.status(200).json({
+        msg: data
+      })
+    }
+  })
+})
 
   module.exports = router;
