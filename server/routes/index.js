@@ -4,7 +4,19 @@ var User = require('../models/user');
 var ObjectId = require('mongodb').ObjectId
 // var mid = require('../middleware');
 
-//PUT /subscription
+//GET /subscriptions
+router.get('/subscriptions', function(req, res, next) {
+  User.find(req.session.userId, 'subscriptions')
+      .exec(function (error, sub) {
+        if (error) {
+          return next(error);
+        } else {
+          return res.json(sub);
+        }
+      });
+});
+
+//PUT /subscribe
 router.put('/subscribe', function(req, res, next) {
   User.findOneAndUpdate(
     {_id: ObjectId(req.body.params.user)},
@@ -27,6 +39,19 @@ router.get('/users', function (req, res, next) {
         }
       });
 })
+
+// GET /user
+router.get('/user', function(req, res, next) {
+  User.findOne({ _id: ObjectId(req.query._id)})
+      .exec(function (error, user) {
+        if (error) {
+          return next(error);
+        } else {
+          console.log(user);
+          return res.json(user);
+        }
+      });
+});
 
 // GET /profile
 router.get('/profile', function(req, res, next) {

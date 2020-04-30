@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import EditIcon from '@material-ui/icons/Edit';
 
 export default class UserProfile extends Component {
