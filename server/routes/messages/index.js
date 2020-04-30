@@ -84,8 +84,8 @@ router.post('/add', function (req, res, next) {
   })
 
   // Delete Message
-router.route('/deletemessage/:id').delete((req, res, next) => {
-  Message.findByIdAndRemove(req.params.id, (error, data) => {
+router.route('/deletemessage').delete((req, res, next) => {
+  Message.deleteOne({content: req.query[0]}, (error, data) => {
     if (error) {
       return next(error);
     } else {
